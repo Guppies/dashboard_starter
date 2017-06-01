@@ -1,0 +1,34 @@
+.right_col{:role => "main", :style => "min-height: 100%;"}
+  %div
+    .page-title
+      .title_left
+        %h3 Dashboard
+      .title_right
+        .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
+          .input-group
+            %input.form-control{:placeholder => "Search for...", :type => "text"}/
+            %span.input-group-btn
+              %button.btn.btn-default{:type => "button"} Go!
+    .clearfix
+    .row
+      .col-md-12.col-sm-12.col-xs-12
+        .x_panel
+          .x_content
+            %table.table.table-condensed.table-striped.datatable
+              %thead
+                %tr
+                  %th User ID
+                  %th Email
+                  %th Created at
+                  %th Last Sign in
+                  %th Edit
+                  %th Delete
+              %tbody
+                - @users.each do |user|
+                  %tr
+                    %td= user.id
+                    %td= user.email
+                    %td= user.created_at
+                    %td= user.last_sign_in_at
+                    %td= link_to 'Edit', edit_user_path(user)
+                    %td= link_to 'Delete', user_path(user), method: :delete, "data-confirm": 'Are You Sure?'

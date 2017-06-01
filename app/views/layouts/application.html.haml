@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= content_for?(:title) ? yield(:title) : 'Alkimii Mailer'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Alkimii Mailer'}"}
+    = stylesheet_link_tag 'application'
+    = csrf_meta_tags
+  %body{:class => [controller.controller_name, controller.action_name, @class, 'nav-md']}
+    .container.body
+      .main_container
+        = render 'layouts/messages'
+        - if current_user.present?
+          = render partial: '/layouts/left_sidebar'
+          = render partial: '/layouts/top_navigation'
+        = yield
+      = render partial: '/layouts/footer' if current_user.present?
+    = javascript_include_tag 'application'
+    = yield :javascript_includes

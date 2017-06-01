@@ -1,0 +1,13 @@
+= form_for(@user, html: { class: 'form form-horizontal' }) do |f|
+  .form-group
+    = f.label :name, 'Name', class: 'control-label col-xs-2'
+    .col-xs-10
+      = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :email, 'Email', class: 'control-label col-xs-2'
+    .col-xs-10
+      = f.email_field :email, class: 'form-control'
+
+  .form-group
+    .col-xs-3.pull-right
+      = f.submit 'Submit', class: 'btn btn-sm btn-success btn-block pull-right'

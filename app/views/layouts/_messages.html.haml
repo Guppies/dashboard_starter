@@ -1,0 +1,7 @@
+-# Rails flash messages styled for Bootstrap 3.0
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    = render partial: '/layouts/message', locals: { msg: msg, name: name }
+  - if msg.is_a?(Array)
+    - msg.each do |m|
+      = render partial: '/layouts/message', locals: { msg: m, name: name }
